@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start" *ngIf="selectedCategory">{{selectedCategory.category_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="selectedCategory">
+  <div class="ion-padding">
+    <!-- <ion-item style="--background: url('../../assets/bg.jpg');"> -->
+    <!-- <div *ngFor="let data of selectedCategory.services" [class]="checkCart(data.service_id)" -->
+    <div *ngFor="let data of selectedCategory.services" [class]="checkCart(data)" (click)="onCategorySelect(data)">
+      <!-- <ion-checkbox slot="end" [(ngModel)]="data.selected"></ion-checkbox> -->
+      <span style="font-weight:bold">{{data.service_title}}</span><br>
+      <hr>
+      <br>
+      <ion-grid class="ion-no-padding" style="margin-bottom: 1.5em;">
+        <ion-row class="ion-no-padding">
+          <ion-col class="ion-no-padding" style="text-align: left;">
+            <ion-chip color="dark">
+              <ion-icon name="timer-outline"></ion-icon>
+              <ion-label>{{data.estimated_time}} </ion-label>
+            </ion-chip>
+          </ion-col>
+          <ion-col class="ion-no-padding" style="text-align: right;">
+            <ion-chip  style="--color:#fff; font-size: large; font-weight: bold;">
+              <ion-label>{{data.currency}} {{data.price}} </ion-label>
+            </ion-chip>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div (click)="onMoreServices()" style="display:inline-block;background: #ad0000;
+  color: #fff;
+  padding-top: 1em;padding-bottom:1em; text-align: center;width: 50%; border-right: 1px solid #000;">
+    <span> 
+      <!-- <ion-icon name="add-outline"></ion-icon> -->
+       Add More </span>
+  </div>
+  <div (click)="onSelectSchedules()" style="display:inline-block;background: #ad0000;
+  color: #fff;
+  padding-top: 1em;padding-bottom:1em; text-align: center;width: 50%; border-left: 1px solid #000">
+    <span>Book Now</span>
+  </div>
+</ion-footer>

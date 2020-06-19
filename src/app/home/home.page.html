@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start">Make an appointment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <!-- <ion-item style="--background: url('../../assets/bg.jpg');"> -->
+    <div class="item-custom ion-padding" *ngFor="let d of data" (click)="onCategorySelect(d)">
+      <div style="float: left;padding-top: 2em;">
+        <span style="font-weight:bold">{{d.category_title}}</span><br>
+        <hr>
+      </div>
+      <div style="float: right;"> 
+
+        <img [src]="d.icon" alt="" height="100px">
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start">Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [fullscreen]="true" >
+  <ion-list style="background: none;">
+    
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"  *ngIf="user.username!=null">
+      <ion-col size="5" style="font-weight:bold" class="text-right">
+        Username
+      </ion-col>
+      <ion-col size="7">
+        {{user.username}}
+      </ion-col>
+    </ion-item> 
+
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.name!=null">
+      <ion-col size="5" style="font-weight:bold" class="text-right">
+        Name
+      </ion-col>
+      <ion-col size="7">
+        {{user.name}}
+      </ion-col>
+    </ion-item> 
+
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.gender!=null">
+      <ion-col size="5" style="font-weight:bold" class="text-right">
+        Gender
+      </ion-col>
+      <ion-col size="7">
+        {{user.gender}}
+      </ion-col>
+    </ion-item> 
+
+
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.address!=null">
+      <ion-col size="5" style="font-weight:bold" class="text-right">
+        Address
+      </ion-col>
+      <ion-col size="7">
+        {{user.address}}
+      </ion-col>
+    </ion-item> 
+
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.mobile!=null">
+      <ion-col size="5" style="font-weight:bold" class="text-right">
+        Mobile
+      </ion-col>
+      <ion-col size="7">
+        {{user.mobile}}
+      </ion-col>
+    </ion-item> 
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.email!=null">
+      <ion-col size="5" style="font-weight:bold" class="text-right">
+        Email
+      </ion-col>
+      <ion-col size="7">
+        {{user.email}}
+      </ion-col>
+    </ion-item> 
+
+
+  </ion-list>
+
+</ion-content>

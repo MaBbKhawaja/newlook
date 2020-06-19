@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar
+    style="--background: #fff;--color: #000;--border-style: none;--border-width: none;--border-color: #000;--opacity: 1;">
+    <ion-buttons slot="end" >
+      <ion-icon name="close-outline" style="font-weight: bold; font-size: 32px;" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <ion-title>Cancel Appiontment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="--background: none">
+
+  <ion-item>
+    <ion-textarea placeholder="Enter reason to cancel..." autofocus="true" rows="6" spellcheck="true"
+      auto-grow="false" [(ngModel)]="reason" ></ion-textarea>
+  </ion-item>
+  <ion-button expand="full" size="large" color="secondary" (click)="onSubmit()">Submit</ion-button>
+
+</ion-content>

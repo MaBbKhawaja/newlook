@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start">Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-grid style="border-bottom: 1px solid #e2e2e2;">
+      <ion-row>
+        <ion-col>
+          <div>{{date | date: 'EEEE'}}</div>
+          <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">{{date | date}}</div>
+
+        </ion-col>
+        <ion-col>
+          <div>Time</div>
+          <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">{{time}}</div>
+
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    <div style="padding: 12px;float: left; width: 100%;">
+
+      <div>Appointment type </div>
+      <div
+        style="border-bottom: 1px solid #e2e2e2; padding-bottom: 15px;font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
+        {{orderType}}</div>
+      <div style="padding-top: 15px;">Selected services</div>
+      <div *ngFor="let item of cartItems; let i=index"
+        style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
+        <p>
+          <ion-icon name="trash-outline" color="primary" (click)="onDeleteCartItem(item,i)"></ion-icon>
+          {{item.service_title}}
+        </p>
+      </div>
+      <div
+        style="text-align: center;font-size: 26px;color: #000000; font-weight: bold; border-top: 1px solid #e2e2e2; padding-top: 10px;">
+        Rs. {{totalPrice | number}}
+      </div>
+
+    </div>
+  </ion-card>
+  <ion-card color="primary" class="ion-padding" style=" text-align: center;" (click)="onMoreServices()" >
+    <ion-title>Add More Services</ion-title>
+  </ion-card>
+</ion-content>
+
+<ion-footer (click)="onPlaceBooking()">
+  <ion-toolbar style="--background: #ad0000 ;
+  --color: #fff;
+  --opacity: 1; text-align: center;">
+    <ion-title>Confirm Booking</ion-title>
+  </ion-toolbar>
+</ion-footer>

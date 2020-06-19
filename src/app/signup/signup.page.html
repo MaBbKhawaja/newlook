@@ -1,0 +1,68 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="ion-padding" style="margin-top: 2em; color: #fff;text-align: center;">
+    <ion-grid style="margin-bottom: 1.5em;">
+      <ion-row>
+        <ion-col>
+          <hr>
+        </ion-col>
+        <ion-col style="font-weight: bold; font-size: 22px;">
+          Sign Up
+        </ion-col>
+        <ion-col>
+          <hr>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-input placeholder="Name" [(ngModel)]="name" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input placeholder="Email" [(ngModel)]="email" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input type="number" placeholder="Age" [(ngModel)]="age" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input placeholder="Address" [(ngModel)]="address" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input type="number" placeholder="Mobile" [(ngModel)]="mobile" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input type="number" placeholder="Mobile" [(ngModel)]="mobile" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="gender" placeholder="Select One">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="male">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+   
+    <br>
+
+    <ion-button expand="full" size="large" color="secondary" (click)="onSignUp()">Sign Up</ion-button>
+    <p>Already a user? <span style="text-decoration: underline; color: #ad0000;" (click)="onSignIn()">Sign In</span></p>
+  </div>
+
+</ion-content>

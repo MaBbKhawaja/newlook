@@ -1,5 +1,7 @@
 {
   "name": "newlook",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

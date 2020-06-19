@@ -1,0 +1,37 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="ion-padding" style=" color: #fff;text-align: center;">
+    <img src="assets/logo.png" alt="" srcset="">
+    <ion-grid style="margin-bottom: 1.5em;">
+      <ion-row>
+        <ion-col>
+          <hr>
+        </ion-col>
+        <ion-col style="font-weight: bold; font-size: 22px;">
+          Sign In
+        </ion-col>
+        <ion-col>
+          <hr>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-input placeholder="Email" [(ngModel)]="email" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button expand="full" size="large" color="secondary" (click)="onSignIn()" >Sign In</ion-button>
+    <p>Not a user? <span style="text-decoration: underline; color: #ad0000;" (click)="onSignUp()" >Sign Up</span></p>
+  </div>
+
+</ion-content>

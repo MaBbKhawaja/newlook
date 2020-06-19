@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title slot="start">Upcoming Appointments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngIf="upcoming">
+    <ion-card *ngFor="let item of upcoming.orders">
+      <ion-grid style="border-bottom: 1px solid #e2e2e2;">
+        <ion-row>
+          <ion-col>
+            <div>{{item.date | date: 'EEEE'}}</div>
+            <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">{{item.date | date}}</div>
+
+          </ion-col>
+          <ion-col>
+            <div>Time</div>
+            <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">{{item.time}}</div>
+
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+      <div style="padding: 12px;float: left; width: 100%;">
+
+        <div>Appointment type</div>
+        <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
+          <p>
+
+            {{item.service_title}}
+          </p>
+        </div>
+        <div
+          style="text-align: center;font-size: 26px;color: #000000; font-weight: bold; border-top: 1px solid #e2e2e2; padding-top: 10px;">
+          Rs. {{item.price | number}}
+        </div>
+
+      </div>
+      <div style="padding: 12px; text-align: center;">
+        <ion-button color="secondary" (click)="onCancelAppointment(item.order_id)">Cancel Appointment</ion-button>
+
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

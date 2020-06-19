@@ -1,0 +1,23 @@
+.item-custom {
+    min-height: 120px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    padding-top: 1em;
+    color: #fff;
+    
+}
+.selected{
+    background: rgba(173, 0, 0, .7);
+}
+.unselected{
+    background: rgba(160, 160, 160, .7);
+
+}
+hr {
+    height: 3px !important;
+    width: 50px !important;
+    background: #ad0000 !important;
+    display: inline-block;
+    text-align: left;
+}
