@@ -29,10 +29,14 @@
       <div style="padding: 12px;float: left; width: 100%;">
 
         <div>Appointment type</div>
+        <div
+        style="text-transform: capitalize;border-bottom: 1px solid #e2e2e2; padding-bottom: 15px;font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
+        {{item.appointment_type}}</div>
+        <div style="padding-top: 15px;">Selected services</div>
         <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
-          <p>
+          <p *ngFor="let s of services(item.service_title)">
 
-            {{item.service_title}}
+            {{s}}
           </p>
         </div>
         <div

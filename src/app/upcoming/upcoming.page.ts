@@ -25,7 +25,7 @@ export class UpcomingPage implements OnInit {
     })
   }
 
-  async onCancelAppointment(orderId){
+  async onCancelAppointment(orderId) {
     const modal = await this.restService.modalCtrl.create({
       component: CancelAppointmentPage,
       componentProps: {
@@ -33,7 +33,17 @@ export class UpcomingPage implements OnInit {
         'orderId': orderId
       }
     });
+
+    modal.onDidDismiss()
+      .then(() => {
+        this.upcoming = null;
+        this.ngOnInit();
+      });
     return await modal.present();
+  }
+
+  services(services){
+    return services.split(',');
   }
 
 }

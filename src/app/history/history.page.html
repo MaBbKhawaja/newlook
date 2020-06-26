@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="completed" >
+  <div *ngIf="completed">
     <ion-card *ngFor="let item of completed.orders">
       <ion-grid style="border-bottom: 1px solid #e2e2e2;">
         <ion-row>
           <ion-col>
             <div>{{item.date | date: 'EEEE'}}</div>
-          <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">{{item.date | date}}</div>
+            <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">{{item.date | date}}</div>
 
           </ion-col>
           <ion-col>
@@ -28,23 +28,84 @@
       <div style="padding: 12px;float: left; width: 100%;">
 
         <div>Appointment type</div>
+        <div
+        style="text-transform: capitalize;border-bottom: 1px solid #e2e2e2; padding-bottom: 15px;font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
+        {{item.appointment_type}}</div>
+        <div style="padding-top: 15px;">Selected services</div>
         <div style="font-size: 18px;color: #000000; font-weight: bold; margin-top: 7px;">
-          <p>
+          <p *ngFor="let s of services(item.service_title)">
 
-            {{item.service_title}}
+            {{s}}
           </p>
         </div>
         <div
           style="text-align: center;font-size: 26px;color: #000000; font-weight: bold; border-top: 1px solid #e2e2e2; padding-top: 10px;">
           Rs. {{item.price | number}}
         </div>
-        
-        <div style="text-align: right;">
-          <span (click)="addReviewModal()">Leave a review</span>
-        </div>
-        <div>
-          
-        </div>
+
+        <ng-container *ngIf="!item.reviewed; else reviewDiv">
+          <div style="text-align: right; width: 100%; color: #ad0000; cursor :pointer">
+            <span (click)="addReviewModal(item.order_id)">Leave a review</span>
+          </div>
+        </ng-container>
+
+        <ng-template #reviewDiv>
+
+          <div style="border-top: 1px solid #e2e2e2; margin-top: 15px; padding-top: 10px;">Your Review
+
+          </div>
+          <div *ngIf="item.stars==0">
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+          </div>
+          <div *ngIf="item.stars==1">
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+          </div>
+          <div *ngIf="item.stars==2">
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+          </div>
+
+          <div *ngIf="item.stars==3">
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+          </div>
+          <div *ngIf="item.stars==4">
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star-outline"></ion-icon>
+          </div>
+          <div *ngIf="item.stars==5">
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+            <ion-icon color="primary" name="star"></ion-icon>
+          </div>
+
+          <p>Comments</p>
+          <p style="color: #000000;">
+            {{item.reviewed}}
+          </p>
+        </ng-template>
+
+
+
 
       </div>
     </ion-card>

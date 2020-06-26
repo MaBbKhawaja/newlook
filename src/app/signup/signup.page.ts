@@ -50,8 +50,9 @@ export class SignupPage implements OnInit {
       if (res.status == 200 && res.data.user_id) {
         this.restService.toastMessage('Sign up successful.')
         this.restService.navCtrl.navigateForward('/login');
+        this.restService.toastMessage(res.message)
       } else {
-        this.restService.toastMessage('Internal server error.')
+        this.restService.toastMessage(res.message)
       }
     })
     // .catch(err => {

@@ -4,7 +4,6 @@ import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RestService } from './rest.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -28,11 +27,16 @@ export class AppComponent implements OnInit {
     //   url: '/home',
     //   icon: 'cart'
     // },
-    // {
-    //   title: 'Appointments',
-    //   url: '/appointments',
-    //   icon: 'calendar'
-    // },
+    {
+      title: 'Upcoming Appointments',
+      url: '/upcoming',
+      icon: 'calendar'
+    },
+    {
+      title: 'History',
+      url: '/history',
+      icon: 'pricetag'
+    },
     {
       title: 'Profile',
       url: '/profile',
@@ -69,7 +73,7 @@ export class AppComponent implements OnInit {
     // localStorage.removeItem('user');
     localStorage.clear();
     this.restService.setData(null)
-    this.restService.navCtrl.navigateForward('/login');
+    this.restService.navCtrl.navigateRoot('/login');
     this.menu.close();
   }
 }

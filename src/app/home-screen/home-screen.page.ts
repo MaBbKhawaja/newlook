@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-screen',
@@ -10,15 +11,23 @@ export class HomeScreenPage implements OnInit {
   user;
   loyaltyPoints;
   subscribe: any;
-  constructor(public restService: RestService) {
-    this.subscribe = this.restService.platform.backButton.subscribeWithPriority(66666, () => {
-      if (this.constructor.name == "LoginPage") {
+  constructor(public restService: RestService, public route: ActivatedRoute) {
+    // console.log(this.route)
+  }
+
+  ionViewWillEnter() {
+    this.subscribe = this.restService.platform.backButton.
+    subscribeWithPriority(66666, () => {
+      if (this.constructor.name == "HomeScreenPage" && this.restService) {
         if (window.confirm("You want to exit ?")) {
           navigator["app"].exitApp();
         }
       }
     })
-    
+
+  }
+  ionViewWillLeave() {
+    this.subscribe.unsubscribe();
   }
 
   ngOnInit() {
@@ -29,6 +38,7 @@ export class HomeScreenPage implements OnInit {
     }
     this.restService.getLoyaltyPoints(this.user.user_id).subscribe((res: any) => {
       this.loyaltyPoints = res.data.points
+      this.restService.toastMessage(res.message)
     })
 
   }

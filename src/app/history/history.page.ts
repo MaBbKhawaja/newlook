@@ -9,12 +9,14 @@ import { ReviewPage } from '../review/review.page';
 })
 export class HistoryPage implements OnInit {
   completed;
+  user;
+
   constructor(public restService: RestService) { }
 
   ngOnInit() {
-    let user = JSON.parse(localStorage.getItem('user')).user_id;
+    this.user = JSON.parse(localStorage.getItem('user')).user_id;
 
-    this.restService.getOrders(user).subscribe((res: any) => {
+    this.restService.getOrders(this.user).subscribe((res: any) => {
       console.log(res.data)
       for (let i = 0; i < res.data.length; i++) {
 
@@ -22,14 +24,29 @@ export class HistoryPage implements OnInit {
           this.completed = res.data[i]
         }
       }
+      this.restService.toastMessage(res.message)
     })
   }
-  async addReviewModal() {
+  async addReviewModal(orderId) {
     const modal = await this.restService.modalCtrl.create({
       component: ReviewPage,
-      cssClass: 'my-custom-class'
+      componentProps: {
+        'userId': this.user,
+        'orderId': orderId
+      }
     });
+
+    modal.onDidDismiss()
+      .then(() => {
+        this.completed=null;
+        this.ngOnInit();
+      });
+
     return await modal.present();
+  }
+
+  services(services){
+    return services.split(',');
   }
 
 }

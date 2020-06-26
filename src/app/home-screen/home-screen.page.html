@@ -8,27 +8,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <div class="ion-padding">
-    <div class="item-custom ion-padding-horizontal"(click)="onAppointmentSelect()" >
+    <div class="item-custom ion-padding-horizontal" (click)="onAppointmentSelect()">
       <span style="font-weight:bold; text-transform: capitalize; font-size: 1.3em;">book an appointment</span><br>
-      <!-- <hr> -->
-
     </div>
 
-    <div class="item-custom ion-padding-horizontal"(click)="onUpcomingSelect()" >
+    <div class="item-custom ion-padding-horizontal" (click)="onUpcomingSelect()">
       <span style="font-weight:bold; text-transform: capitalize; font-size: 1.3em;">my appointments</span><br>
-  
-
     </div>
-    <div class="item-custom ion-padding-horizontal"(click)="onHistorySelect()" >
+
+    <div class="item-custom ion-padding-horizontal" (click)="onHistorySelect()">
       <span style="font-weight:bold; text-transform: capitalize; font-size: 1.3em;">history</span><br>
-  
-
     </div>
 
-    <div class="item-custom ion-padding-horizontal" >
-      <div style="font-weight:bold; text-transform: capitalize; font-size: 3em;">{{loyaltyPoints}} </div> <div style="text-transform: capitalize;">loyalty points</div> 
-     
+    <div class="item-custom ion-padding-horizontal">
+      <div style="font-weight:bold; text-transform: capitalize; font-size: 3em;">{{loyaltyPoints}} </div>
+      <div style="text-transform: capitalize;">loyalty points</div>
+
     </div>
   </div>
 </ion-content>

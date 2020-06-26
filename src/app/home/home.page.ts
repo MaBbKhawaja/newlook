@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
         }
       }
       this.restService.setData(this.data);
+      // this.restService.toastMessage(res.message)
     })
   }
 

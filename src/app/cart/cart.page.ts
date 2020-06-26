@@ -83,7 +83,7 @@ export class CartPage implements OnInit {
         this.restService.navCtrl.navigateRoot('/home-screen')
       }
       else {
-        this.restService.toastMessage("Internal server error")
+        this.restService.toastMessage(res.message)
       }
     })
   }

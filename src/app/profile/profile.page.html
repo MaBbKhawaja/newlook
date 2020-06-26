@@ -7,63 +7,120 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  [fullscreen]="true" >
-  <ion-list style="background: none;">
-    
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"  *ngIf="user.username!=null">
+<ion-content [fullscreen]="true">
+
+  <div *ngIf="edit">
+<br>
+    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+      <ion-label position="fixed">Name</ion-label>
+      <ion-input placeholder="Name" [(ngModel)]="user.name" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+      <ion-label position="fixed">Email</ion-label>
+      <ion-input placeholder="Email" [(ngModel)]="user.email" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+
+    <br>
+    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+      <ion-label position="fixed">Age</ion-label>
+      <ion-input type="number" placeholder="Age" [(ngModel)]="user.age" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+      <ion-label position="fixed">Address</ion-label>
+      <ion-input placeholder="Address" [(ngModel)]="user.address" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+      <ion-label position="fixed">Mobile</ion-label>
+      <ion-input type="text" placeholder="Mobile" [(ngModel)]="user.mobile" style="border-radius: 10px;"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+      <ion-label position="fixed">Gender</ion-label>
+      <ion-select [(ngModel)]="user.gender" placeholder="Select One">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="male">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+<br>
+  <div style="text-align: center;">
+    <ion-button color="secondary" (click)="onSave()">Save User</ion-button>
+
+  </div>
+
+  </div>
+
+  <ion-list style="background: none;" *ngIf="!edit">
+
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+      *ngIf="user.username!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Username
       </ion-col>
       <ion-col size="7">
         {{user.username}}
       </ion-col>
-    </ion-item> 
+    </ion-item>
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.name!=null">
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+      *ngIf="user.name!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Name
       </ion-col>
       <ion-col size="7">
         {{user.name}}
       </ion-col>
-    </ion-item> 
+    </ion-item>
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.gender!=null">
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+      *ngIf="user.gender!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Gender
       </ion-col>
       <ion-col size="7">
         {{user.gender}}
       </ion-col>
-    </ion-item> 
+    </ion-item>
 
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.address!=null">
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+      *ngIf="user.address!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Address
       </ion-col>
       <ion-col size="7">
         {{user.address}}
       </ion-col>
-    </ion-item> 
+    </ion-item>
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.mobile!=null">
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+      *ngIf="user.mobile!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Mobile
       </ion-col>
       <ion-col size="7">
         {{user.mobile}}
       </ion-col>
-    </ion-item> 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;" *ngIf="user.email!=null">
+    </ion-item>
+    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+      *ngIf="user.email!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Email
       </ion-col>
       <ion-col size="7">
         {{user.email}}
       </ion-col>
-    </ion-item> 
+    </ion-item>
+<br>
 
+    <div style="text-align: center;">
+      <ion-button color="secondary" (click)="onEdit()">Edit User</ion-button>
+
+    </div>  
 
   </ion-list>
 

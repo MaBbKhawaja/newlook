@@ -60,7 +60,7 @@ export class RestService {
     }
 
     return this.http
-      .get(this.base + 'login.php' ,{ params:data })
+      .get(this.base + 'login.php', { params: data })
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -86,6 +86,25 @@ export class RestService {
 
   }
 
+  editUser(data) {
+    // let data = {
+    //   name: name,
+    //   email: email,
+    //   age: age,
+    //   address: address,
+    //   mobile: mobile,
+    //   gender: gender,
+    //   user_id:userId
+    // }
+    return this.http
+      .get(this.base + 'updateUser.php', { params: data })
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+
+  }
+
   getSchedules() {
     return this.http.get(this.base + 'time_slots.php')
       .pipe(
@@ -95,7 +114,7 @@ export class RestService {
   }
 
   getLoyaltyPoints(id) {
-    return this.http.get(this.base + 'getLoyaltyPoints.php?user_id='+id)
+    return this.http.get(this.base + 'getLoyaltyPoints.php?user_id=' + id)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -103,7 +122,7 @@ export class RestService {
   }
 
   bookAppointment(data) {
-    return this.http.get(this.base + 'setorder.php', {params:data})
+    return this.http.get(this.base + 'setorder.php', { params: data })
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -111,7 +130,38 @@ export class RestService {
   }
 
   getOrders(id) {
-    return this.http.get(this.base + 'getOrders.php')
+    return this.http.get(this.base + 'getOrders.php?user_id=' + id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  postReview(userId, orderId, comment, stars) {
+
+    let data = {
+      user_id: userId,
+      order_id: orderId,
+      comment: comment,
+      stars: stars,
+    }
+
+    return this.http.get(this.base + 'setReview.php', { params: data })
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  cancelAppointment(userId, orderId, reason) {
+
+    let data = {
+      user_id: userId,
+      order_id: orderId,
+      reason: reason
+    }
+
+    return this.http.get(this.base + 'cancelOrder.php', { params: data })
       .pipe(
         retry(1),
         catchError(this.handleError)

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar
     style="--background: #fff;--color: #000;--border-style: none;--border-width: none;--border-color: #000;--opacity: 1;">
-    <ion-buttons slot="end" >
+    <ion-buttons slot="end">
       <ion-icon name="close-outline" style="font-weight: bold; font-size: 32px;" (click)="dismiss()"></ion-icon>
     </ion-buttons>
     <ion-title>Add Review</ion-title>
@@ -9,10 +9,55 @@
 </ion-header>
 
 <ion-content class="ion-padding" style="--background: none">
+    <p>Rate the Services</p>
+  <div *ngIf="rate==0">
+    <ion-icon color="primary" name="star-outline" (click)="onRate(1)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+  </div>
+  <div *ngIf="rate==1">
+    <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+  </div>
+  <div *ngIf="rate==2">
+    <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+  </div>
 
+  <div *ngIf="rate==3">
+    <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+  </div>
+  <div *ngIf="rate==4">
+    <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(4)"></ion-icon>
+    <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+  </div>
+  <div *ngIf="rate==5">
+    <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(4)"></ion-icon>
+    <ion-icon color="primary" name="star" (click)="onRate(5)"></ion-icon>
+  </div>
+
+  <p>Leave a review</p>
   <ion-item>
-    <ion-textarea placeholder="Enter more information here..." autofocus="true" rows="6" spellcheck="true"
-      auto-grow="false" [(ngModel)]="review" ></ion-textarea>
+    <ion-textarea placeholder="Enter your valuable comments..." autofocus="true" rows="6" spellcheck="true"
+      auto-grow="false" [(ngModel)]="review"></ion-textarea>
   </ion-item>
   <ion-button expand="full" size="large" color="secondary" (click)="onSubmit()">Submit</ion-button>
 

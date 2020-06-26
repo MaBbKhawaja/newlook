@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,11 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-user;
-  constructor() { }
+  user;
+  edit = false;
+  constructor(public restService: RestService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
+  onEdit() {
+    console.log("MIRZA")
+    this.edit = true;
+  }
+  onSave() {
+
+    console.log(this.user)
+    this.restService.editUser(this.user).subscribe((res: any) => {
+
+      if (res.status == 200) {
+        this.edit = false;
+      }
+      this.restService.toastMessage(res.message)
+      console.log(res)
+    })
+
   }
 
 }

@@ -10,10 +10,14 @@ import { RestService } from '../rest.service';
 export class LoginPage implements OnInit {
   email;
   password;
-  subscribe: any;
+  subscriber: any;
   constructor(public menu: MenuController, public restService: RestService) {
     this.menu.swipeGesture(false)
-    this.subscribe = this.restService.platform.backButton.subscribeWithPriority(66666, () => {
+
+  }
+
+  ionViewWillEnter() {
+    this.subscriber = this.restService.platform.backButton.subscribeWithPriority(66666, () => {
       if (this.constructor.name == "LoginPage") {
         if (window.confirm("You want to exit ?")) {
           navigator["app"].exitApp();
@@ -24,7 +28,9 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-  
+  ionViewWillLeave() {
+    this.subscriber.unsubscribe();
+  }
   onSignIn() {
     if (!this.email) {
       this.restService.toastMessage('Enter Email')
@@ -37,9 +43,10 @@ export class LoginPage implements OnInit {
     this.restService.signIn(this.email, this.password).subscribe((res: any) => {
       if (res.data.user_id) {
         localStorage.setItem("user", JSON.stringify(res.data))
-        this.restService.navCtrl.navigateForward('/home');
+        this.restService.navCtrl.navigateRoot('/home-screen');
+        this.restService.toastMessage(res.message)
       } else {
-        this.restService.toastMessage('Internal server error.')
+        this.restService.toastMessage(res.message)
       }
     })
     // .catch(err => {
@@ -48,7 +55,7 @@ export class LoginPage implements OnInit {
     // })
   }
 
-  onSignUp(){
+  onSignUp() {
     this.restService.navCtrl.navigateForward('/signup');
   }
 

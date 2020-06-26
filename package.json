@@ -11,11 +11,13 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "android": "ionic cordova emulate android",
+    "device": "ionic cordova emulate android --device --consolelogs",
     "new-key": "keytool -genkey -v -keystore salon.keystore -alias salon -keyalg RSA -keysize 2048 -validity 10000",
     "android-build": "ionic cordova build android --prod --release",
     "sign-apk": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore salon.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk salon",
     "zipalign": "/home/mabbkhawaja/Android/Sdk/build-tools/29.0.3/zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk salon.apk",
-    "key": "newlook"
+    "key": "newlook",
+    "android-deploy": "npm run android-build; npm run sign-apk; npm run zipalign"
   },
   "private": true,
   "dependencies": {

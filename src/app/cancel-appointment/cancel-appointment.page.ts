@@ -15,8 +15,16 @@ export class CancelAppointmentPage implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-    console.log(this.reason)
-    this.dismiss();
+    if (!this.reason) {
+      this.restService.toastMessage("Add a reason to cancel appointment")
+      return;
+    }
+    this.restService.cancelAppointment(this.userId, this.orderId, this.reason).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.dismiss();
+      }
+      this.restService.toastMessage(res.message)
+    })
   }
   dismiss() {
     this.restService.modalCtrl.dismiss({
