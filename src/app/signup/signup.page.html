@@ -5,7 +5,7 @@
 </ion-header> -->
 
 <ion-content>
-  <div class="ion-padding" style="margin-top: 2em; color: #fff;text-align: center;">
+  <div class="ion-padding" style="margin-top: 2em; color: #000;text-align: center;">
     <ion-grid style="margin-bottom: 1.5em;">
       <ion-row>
         <ion-col>
@@ -34,7 +34,10 @@
     </ion-item>
     <br>
     <ion-item>
-      <ion-input type="number" placeholder="Age" [(ngModel)]="age" style="border-radius: 10px;"></ion-input>
+
+  <ion-label>Date of birth</ion-label>
+      <ion-datetime [(ngModel)]="age" displayFormat="MM/DD/YYYY" min="1920-03-14"></ion-datetime>
+      <!-- <ion-input type="number" placeholder="Age" [(ngModel)]="age" style="border-radius: 10px;"></ion-input> -->
     </ion-item>
     <br>
     <ion-item>

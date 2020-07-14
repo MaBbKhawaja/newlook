@@ -38,7 +38,7 @@ export class HomeScreenPage implements OnInit {
     }
     this.restService.getLoyaltyPoints(this.user.user_id).subscribe((res: any) => {
       this.loyaltyPoints = res.data.points
-      this.restService.toastMessage(res.message)
+      // this.restService.toastMessage(res.message)
     })
 
   }

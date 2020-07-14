@@ -22,6 +22,8 @@ export class SignupPage implements OnInit {
   }
 
   onSignUp() {
+    console.log(this.age)
+
     if (!this.name) {
       this.restService.toastMessage('Enter Name')
       return;
@@ -45,6 +47,9 @@ export class SignupPage implements OnInit {
     if (!this.mobile) {
       this.restService.toastMessage('Enter Mobile')
       return;
+    }
+    if (this.age) {
+      this.age=this.age.split('T',1)[0]
     }
     this.restService.signUp(this.name, this.email, this.password, this.age, this.address, this.mobile, this.gender).subscribe((res: any) => {
       if (res.status == 200 && res.data.user_id) {

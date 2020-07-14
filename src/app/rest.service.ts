@@ -67,12 +67,12 @@ export class RestService {
       )
   }
 
-  signUp(name, email, password, age, address, mobile, gender) {
+  signUp(name, email, password, dob, address, mobile, gender) {
     let data = {
       name: name,
       email: email,
       password: password,
-      age: age,
+      dob: dob,
       address: address,
       mobile: mobile,
       gender: gender

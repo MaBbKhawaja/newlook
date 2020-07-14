@@ -11,7 +11,7 @@ export class ListPage implements OnInit {
   selectedCategory = null;
   categoryId;
   allCategoriesData;
-  cart=[]
+  cart = []
   constructor(public restService: RestService, public route: ActivatedRoute) {
 
   }
@@ -39,20 +39,20 @@ export class ListPage implements OnInit {
     for (let i = 0; i < this.allCategoriesData.length; i++) {
       if (this.allCategoriesData[i].category_id == this.categoryId) {
         for (let j = 0; j < this.allCategoriesData[i].services.length; j++) {
-          if (this.allCategoriesData[i].services[j].service_id == data.service_id && data.selected==false) {
+          if (this.allCategoriesData[i].services[j].service_id == data.service_id && data.selected == false) {
 
             this.allCategoriesData[i].services[j].selected = true;
             this.selectedCategory = this.allCategoriesData[i];
-            
-          }
-          else 
-          if (this.allCategoriesData[i].services[j].service_id == data.service_id && data.selected==true) {
 
-            this.allCategoriesData[i].services[j].selected = false;
-            this.selectedCategory = this.allCategoriesData[i];
-            
           }
-          
+          else
+            if (this.allCategoriesData[i].services[j].service_id == data.service_id && data.selected == true) {
+
+              this.allCategoriesData[i].services[j].selected = false;
+              this.selectedCategory = this.allCategoriesData[i];
+
+            }
+
         }
       }
     }
@@ -62,32 +62,41 @@ export class ListPage implements OnInit {
   }
 
   checkCart(data) {
-      if (data.selected == true) {
-        return "item-custom ion-padding-horizontal selected";
-      }
-      else {
-        return "item-custom ion-padding-horizontal unselected";
-      }
+    if (data.selected == true) {
+      return "item-custom ion-padding-horizontal selected";
+    }
+    else {
+      return "item-custom ion-padding-horizontal unselected";
+    }
 
   }
 
-  onSelectSchedules(){
+  onSelectSchedules() {
     for (let i = 0; i < this.allCategoriesData.length; i++) {
       for (let j = 0; j < this.allCategoriesData[i].services.length; j++) {
-        if(this.allCategoriesData[i].services[j].selected==true){
+        if (this.allCategoriesData[i].services[j].selected == true) {
           this.cart.push(this.allCategoriesData[i].services[j])
         }
       }
     }
-    if (this.cart.length<1) {
+    if (this.cart.length < 1) {
       this.restService.toastMessage("Please select atleast one service.")
     }
-    else{
-      localStorage.setItem('cart',JSON.stringify(this.cart))
-      this.restService.navCtrl.navigateForward('/schedule')
+    else {
+      localStorage.setItem('cart', JSON.stringify(this.cart))
+      let date = localStorage.getItem('date');
+      let time = localStorage.getItem('time');
+      if (date && time) {
+        this.restService.navCtrl.navigateForward('/cart');
+      }
+      else {
+        this.restService.navCtrl.navigateForward('/schedule');
+      }
+      // localStorage.setItem('cart',JSON.stringify(this.cart))
+      // this.restService.navCtrl.navigateForward('/schedule')
     }
   }
-  onMoreServices(){
+  onMoreServices() {
     this.restService.navCtrl.navigateForward('/home')
   }
 

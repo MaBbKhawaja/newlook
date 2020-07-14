@@ -4,6 +4,8 @@ import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RestService } from './rest.service';
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,9 +18,9 @@ export class AppComponent implements OnInit {
       title: 'Home',
       url: '/home-screen',
       icon: 'home'
-    }, 
+    },
     {
-      title: 'Categories',
+      title: 'Book Appointment',
       url: '/category',
       icon: 'apps'
     },
@@ -50,9 +52,50 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private restService: RestService,
-    public menu: MenuController
+    public menu: MenuController,
+    private fcm: FCM
   ) {
     this.initializeApp();
+
+    // PUSH NOTIFICATIONS START
+
+    this.platform.ready()
+      .then(() => {
+        this.fcm.subscribeToTopic('all');
+
+        this.fcm.getToken().then(token => {
+          console.log(token)
+          alert(JSON.stringify(token))
+          // backend.registerToken(token);
+        });
+
+        this.fcm.onNotification().subscribe(data => {
+          if (data.wasTapped) {
+            console.log("Received in background");
+          } else {
+            console.log("Received in foreground");
+          };
+        });
+
+        this.fcm.onTokenRefresh().subscribe(token => {
+          console.log(token)
+          // backend.registerToken(token);
+        });
+
+        this.fcm.hasPermission().then(hasPermission => {
+          if (hasPermission) {
+            console.log("Has permission!");
+          }
+        })
+
+        this.fcm.clearAllNotifications();
+
+        this.fcm.unsubscribeFromTopic('all');
+
+      })
+
+    // PUSH NOTIFICATIONS ENDS
+
   }
 
   initializeApp() {
@@ -76,4 +119,19 @@ export class AppComponent implements OnInit {
     this.restService.navCtrl.navigateRoot('/login');
     this.menu.close();
   }
+
+  // push notifications
+  subscribeToTopic() {
+    this.fcm.subscribeToTopic('enappd');
+  }
+  getToken() {
+    this.fcm.getToken().then(token => {
+      // Register your new token in your back-end if you want
+      // backend.registerToken(token);
+    });
+  }
+  unsubscribeFromTopic() {
+    this.fcm.unsubscribeFromTopic('enappd');
+  }
+
 }

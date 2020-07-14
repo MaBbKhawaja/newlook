@@ -9,36 +9,36 @@
 
 <ion-content [fullscreen]="true">
 
-  <div *ngIf="edit">
-<br>
-    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+  <div *ngIf="edit" class="ion-margin">
+    <br>
+    <ion-item lines="none" style="--background:rgba(255, 255, 255, 0.7); color: #000; border: 1px solid #8d8d8d">
       <ion-label position="fixed">Name</ion-label>
       <ion-input placeholder="Name" [(ngModel)]="user.name" style="border-radius: 10px;"></ion-input>
     </ion-item>
     <br>
-    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+    <ion-item lines="none" style="--background:rgba(255, 255, 255, 0.7); color: #000; border: 1px solid #8d8d8d">
       <ion-label position="fixed">Email</ion-label>
-      <ion-input placeholder="Email" [(ngModel)]="user.email" style="border-radius: 10px;"></ion-input>
+      <ion-input placeholder="Email" disabled [(ngModel)]="user.email" style="border-radius: 10px;"></ion-input>
     </ion-item>
 
     <br>
-    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
-      <ion-label position="fixed">Age</ion-label>
-      <ion-input type="number" placeholder="Age" [(ngModel)]="user.age" style="border-radius: 10px;"></ion-input>
+    <ion-item lines="none" style="--background:rgba(255, 255, 255, 0.7); color: #000; border: 1px solid #8d8d8d">
+      <ion-label position="fixed">Date of birth</ion-label>
+      <ion-datetime [(ngModel)]="user.dob" displayFormat="YYYY-MM-DD" min="1920-03-14"></ion-datetime>
     </ion-item>
     <br>
-    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+    <ion-item lines="none" style="--background:rgba(255, 255, 255, 0.7); color: #000; border: 1px solid #8d8d8d">
       <ion-label position="fixed">Address</ion-label>
       <ion-input placeholder="Address" [(ngModel)]="user.address" style="border-radius: 10px;"></ion-input>
     </ion-item>
     <br>
-    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+    <ion-item lines="none" style="--background:rgba(255, 255, 255, 0.7); color: #000; border: 1px solid #8d8d8d">
       <ion-label position="fixed">Mobile</ion-label>
       <ion-input type="text" placeholder="Mobile" [(ngModel)]="user.mobile" style="border-radius: 10px;"></ion-input>
     </ion-item>
     <br>
 
-    <ion-item lines="none" style="--background:rgba(160, 160, 160, 0.7); color: #fff;">
+    <ion-item lines="none" style="--background:rgba(255, 255, 255, 0.7); color: #000; border: 1px solid #8d8d8d">
       <ion-label position="fixed">Gender</ion-label>
       <ion-select [(ngModel)]="user.gender" placeholder="Select One">
         <ion-select-option value="female">Female</ion-select-option>
@@ -46,17 +46,17 @@
       </ion-select>
     </ion-item>
 
-<br>
-  <div style="text-align: center;">
-    <ion-button color="secondary" (click)="onSave()">Save User</ion-button>
+    <br>
+    <div style="text-align: center;">
+      <ion-button color="secondary" (click)="onSave()">Save User</ion-button>
 
-  </div>
+    </div>
 
   </div>
 
   <ion-list style="background: none;" *ngIf="!edit">
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
       *ngIf="user.username!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Username
@@ -66,7 +66,7 @@
       </ion-col>
     </ion-item>
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
       *ngIf="user.name!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Name
@@ -76,7 +76,7 @@
       </ion-col>
     </ion-item>
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
       *ngIf="user.gender!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Gender
@@ -87,7 +87,7 @@
     </ion-item>
 
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
       *ngIf="user.address!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Address
@@ -97,7 +97,7 @@
       </ion-col>
     </ion-item>
 
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
       *ngIf="user.mobile!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Mobile
@@ -106,7 +106,7 @@
         {{user.mobile}}
       </ion-col>
     </ion-item>
-    <ion-item text-wrap lines="none" style="--background:rgba(160, 160, 160, 0.7); padding: 10px; color: #fff;"
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
       *ngIf="user.email!=null">
       <ion-col size="5" style="font-weight:bold" class="text-right">
         Email
@@ -115,12 +115,21 @@
         {{user.email}}
       </ion-col>
     </ion-item>
-<br>
+    <ion-item text-wrap class="ion-margin" lines="none" style="--background:rgba(255, 255, 255, 0.7);  color: #000; border: 1px solid #8d8d8d"
+    *ngIf="user.email!=null">
+    <ion-col size="5" style="font-weight:bold" class="text-right">
+      Date of birth
+    </ion-col>
+    <ion-col size="7">
+      {{user.dob}}
+    </ion-col>
+  </ion-item>
+    <br>
 
     <div style="text-align: center;">
       <ion-button color="secondary" (click)="onEdit()">Edit User</ion-button>
 
-    </div>  
+    </div>
 
   </ion-list>
 

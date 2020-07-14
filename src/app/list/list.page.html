@@ -12,22 +12,21 @@
     <!-- <ion-item style="--background: url('../../assets/bg.jpg');"> -->
     <!-- <div *ngFor="let data of selectedCategory.services" [class]="checkCart(data.service_id)" -->
     <div *ngFor="let data of selectedCategory.services" [class]="checkCart(data)" (click)="onCategorySelect(data)">
-      <!-- <ion-checkbox slot="end" [(ngModel)]="data.selected"></ion-checkbox> -->
       <span style="font-weight:bold">{{data.service_title}}</span><br>
       <hr>
       <br>
       <ion-grid class="ion-no-padding" style="margin-bottom: 1.5em;">
         <ion-row class="ion-no-padding">
           <ion-col class="ion-no-padding" style="text-align: left;">
-            <ion-chip color="dark">
-              <ion-icon name="timer-outline"></ion-icon>
+            <span class="chips-class">
+              <!-- <ion-icon name="timer-outline"></ion-icon> -->
               <ion-label>{{data.estimated_time}} </ion-label>
-            </ion-chip>
+            </span>
           </ion-col>
           <ion-col class="ion-no-padding" style="text-align: right;">
-            <ion-chip  style="--color:#fff; font-size: large; font-weight: bold;">
+            <span class="chips-class">
               <ion-label>{{data.currency}} {{data.price}} </ion-label>
-            </ion-chip>
+            </span>
           </ion-col>
 
         </ion-row>
@@ -39,9 +38,9 @@
   <div (click)="onMoreServices()" style="display:inline-block;background: #ad0000;
   color: #fff;
   padding-top: 1em;padding-bottom:1em; text-align: center;width: 50%; border-right: 1px solid #000;">
-    <span> 
+    <span>
       <!-- <ion-icon name="add-outline"></ion-icon> -->
-       Add More </span>
+      Add More </span>
   </div>
   <div (click)="onSelectSchedules()" style="display:inline-block;background: #ad0000;
   color: #fff;

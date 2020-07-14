@@ -26,16 +26,20 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-content {
-    --background: url("assets/bg.jpg") no-repeat center center / cover;
+    --background: url("assets/8197.jpg") no-repeat center center / cover;
 }
 ion-toolbar {
-    --background: none;
+    --background: #ad0000;
     --color: #fff;
     --border-style: none;
     --border-width: none;
     --border-color: none;
-    --opacity: 0;
+    // --opacity: 0;
 }
 ion-menu-button {
     --color: #fff;
+}
+
+ion-input {
+    // box-shadow: -1px 11px 12px -10px rgba(0,0,0,0.75);
 }

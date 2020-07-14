@@ -25,6 +25,8 @@ export class ProfilePage implements OnInit {
     this.restService.editUser(this.user).subscribe((res: any) => {
 
       if (res.status == 200) {
+        localStorage.setItem("user", JSON.stringify(res.data))
+        this.user = JSON.parse(localStorage.getItem('user'));
         this.edit = false;
       }
       this.restService.toastMessage(res.message)

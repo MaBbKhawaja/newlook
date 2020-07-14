@@ -99,4 +99,8 @@ export class CartPage implements OnInit {
     }
   }
 
+  onDateEdit() {
+    this.restService.navCtrl.navigateForward('/schedule');
+  }
+
 }
