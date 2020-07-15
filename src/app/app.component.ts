@@ -4,7 +4,8 @@ import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RestService } from './rest.service';
-import { FCM } from '@ionic-native/fcm/ngx';
+// import { FCM } from '@ionic-native/fcm/ngx';
+import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 
 @Component({
   selector: 'app-root',
@@ -65,14 +66,17 @@ export class AppComponent implements OnInit {
 
         this.fcm.getToken().then(token => {
           console.log(token)
-          alert(JSON.stringify(token))
+          // alert(JSON.stringify(token))
           // backend.registerToken(token);
         });
 
         this.fcm.onNotification().subscribe(data => {
           if (data.wasTapped) {
             console.log("Received in background");
+            // alert("MIRZA ANEES")
+
           } else {
+            // alert("BAIG BARLAS")
             console.log("Received in foreground");
           };
         });
@@ -84,7 +88,7 @@ export class AppComponent implements OnInit {
 
         this.fcm.hasPermission().then(hasPermission => {
           if (hasPermission) {
-            console.log("Has permission!");
+            // alert("Has permission!");
           }
         })
 

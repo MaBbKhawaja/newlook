@@ -13,24 +13,6 @@ export class HomeScreenPage implements OnInit {
   subscribe: any;
   constructor(public restService: RestService, public route: ActivatedRoute) {
     // console.log(this.route)
-  }
-
-  ionViewWillEnter() {
-    this.subscribe = this.restService.platform.backButton.
-    subscribeWithPriority(66666, () => {
-      if (this.constructor.name == "HomeScreenPage" && this.restService) {
-        if (window.confirm("You want to exit ?")) {
-          navigator["app"].exitApp();
-        }
-      }
-    })
-
-  }
-  ionViewWillLeave() {
-    this.subscribe.unsubscribe();
-  }
-
-  ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
     console.log(this.user)
     if (!this.user) {
@@ -40,6 +22,24 @@ export class HomeScreenPage implements OnInit {
       this.loyaltyPoints = res.data.points
       // this.restService.toastMessage(res.message)
     })
+  }
+
+  ionViewWillEnter() {
+    this.subscribe = this.restService.platform.backButton.
+      subscribeWithPriority(66666, () => {
+        if (this.constructor.name == "HomeScreenPage" && this.restService) {
+          if (window.confirm("You want to exit ?")) {
+            navigator["app"].exitApp();
+          }
+        }
+      })
+
+  }
+  ionViewWillLeave() {
+    this.subscribe.unsubscribe();
+  }
+
+  ngOnInit() {
 
   }
   onAppointmentSelect() {

@@ -11,9 +11,13 @@ export class HistoryPage implements OnInit {
   completed;
   user;
 
-  constructor(public restService: RestService) { }
+  constructor(public restService: RestService) {
+    this.historyOrdersFunc();
+  }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  historyOrdersFunc() {
     this.user = JSON.parse(localStorage.getItem('user')).user_id;
 
     this.restService.getOrders(this.user).subscribe((res: any) => {
@@ -38,14 +42,14 @@ export class HistoryPage implements OnInit {
 
     modal.onDidDismiss()
       .then(() => {
-        this.completed=null;
-        this.ngOnInit();
+        this.completed = null;
+        this.historyOrdersFunc();
       });
 
     return await modal.present();
   }
 
-  services(services){
+  services(services) {
     return services.split(',');
   }
 

@@ -10,18 +10,25 @@ import { CancelAppointmentPage } from '../cancel-appointment/cancel-appointment.
 export class UpcomingPage implements OnInit {
   upcoming;
   user;
-  constructor(public restService: RestService) { }
+  constructor(public restService: RestService) {
+    this.upcomingAppointmentsFunc();
+  }
   ngOnInit() {
+
+  }
+  upcomingAppointmentsFunc() {
     this.user = JSON.parse(localStorage.getItem('user')).user_id;
 
     this.restService.getOrders(this.user).subscribe((res: any) => {
-      console.log(res.data)
+
       for (let i = 0; i < res.data.length; i++) {
 
         if (res.data[i].orders_title == "Upcoming") {
           this.upcoming = res.data[i]
         }
+
       }
+      // alert(JSON.stringify(res))
     })
   }
 
@@ -37,12 +44,12 @@ export class UpcomingPage implements OnInit {
     modal.onDidDismiss()
       .then(() => {
         this.upcoming = null;
-        this.ngOnInit();
+        this.upcomingAppointmentsFunc();
       });
     return await modal.present();
   }
 
-  services(services){
+  services(services) {
     return services.split(',');
   }
 
